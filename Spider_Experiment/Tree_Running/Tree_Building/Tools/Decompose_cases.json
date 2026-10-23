@@ -1,0 +1,274 @@
+{
+    "data1": {
+        "filtering": 1,
+        "multiple tables joining": 1,
+        "father task": "I want to see the open price of stock 000002 at the day of 2022-10-11, and also its factor_1 data at that day.",
+        "children tasks": [
+            "1. Join the table 'stock_data','factor_1' on the 'stock_id' column.",
+            "2. Select the 'open price', 'data' columns from the joined table where time = '2022-10-11'."
+        ]
+    },
+    "data2": {
+        "multiple tables joining": 1,
+        "father task": "Join the 'factor_1', 'factor_2', 'factor_3', 'factor_4', 'factor_5' on the 'stock_id' column.",
+        "children tasks": [
+            "1. Join the table 'factor_1', 'factor_2', 'factor_3' on the 'stock_id' column.",
+            "2. Join the table of 1 with the tables 'factor_4', 'factor_5' on the 'stock_id' column."
+        ]
+    },
+    "data3": {
+        "filtering": 1,
+        "aggregating": 1,
+        "father task": "Find the total revenue generated from sales in the 'Electronics' category during 2022.",
+        "children tasks": [
+            "1. Filter the 'sales' table to include records from the 'Electronics' category and the year 2022.",
+            "2. Aggregate these records to calculate the total revenue."
+        ]
+    },
+    "data4": {
+        "filtering": 1,
+        "sorting": 1,
+        "father task": "I need to find the top 5 employees by sales in March 2021.",
+        "children tasks": [
+            "1. Filter the 'employee_sales' table to include only sales made in March 2021.",
+            "2. Sort the filtered results by 'sales_amount' in descending order and select the top 5 records."
+        ]
+    },
+    "data5": {
+        "grouping": 1,
+        "filtering": 1,
+        "indexing": 1,
+        "father task": "Identify the most popular product in each category for the year 2022 and ensure efficient querying by creating an index.",
+        "children tasks": [
+            "1. Filter the 'sales_data' table for records in the year 2022.",
+            "2. Group the filtered data by 'product_category' and aggregate to find the product with the highest sales in each category.",
+            "3. Create an index on the 'product_category' and 'sales' columns to optimize the query."
+        ]
+    },
+    "data6": {
+        "merging": 1,
+        "partitioning": 1,
+        "father task": "Merge quarterly sales data into a single table and partition it by quarter for faster data retrieval.",
+        "children tasks": [
+            "1. Merge the 'Q1_sales', 'Q2_sales', 'Q3_sales', and 'Q4_sales' tables into a single 'yearly_sales' table.",
+            "2. Partition the 'yearly_sales' table by the 'quarter' column."
+        ]
+    },
+    "data7": {
+        "multiple tables joining": 1,
+        "sorting": 1,
+        "father task": "List the top 10 products by sales quantity in 2022, including product details from a separate product information table.",
+        "children tasks": [
+            "1. Join the 'sales' table with the 'product_info' table on the 'product_id' column to combine sales data with product details.",
+            "2. Sort the result by 'sales_quantity' in descending order and select the top 10."
+        ]
+    },
+    "data8": {
+        "multiple tables joining": 1,
+        "aggregating": 1,
+        "father task": "Determine the average monthly sales for each product category by joining sales data with product information.",
+        "children tasks": [
+            "1. Join the 'sales' table with the 'product_info' table on 'product_id' to combine sales data with product categories.",
+            "2. Aggregate the joined data to calculate the average sales for each product category on a monthly basis."
+        ]
+    },
+    "data9": {
+        "multiple tables joining": 1,
+        "indexing": 1,
+        "father task": "Find the total sales for each customer by joining orders and customer tables, and use indexing to optimize the query performance.",
+        "children tasks": [
+            "1. Join the 'orders' table with the 'customers' table on 'customer_id' to combine order information with customer details.",
+            "2. Create an index on 'customer_id' in both 'orders' and 'customers' tables to speed up the joining process."
+        ]
+    },
+    "data10": {
+        "grouping": 1,
+        "sorting": 1,
+        "father task": "Identify the top 3 most popular products in each category based on total sales quantity, by first grouping products by their category and then sorting them within each category.",
+        "children tasks": [
+            "1. Group the 'product_sales' table by 'product_category' and sum up the 'sales_quantity' for each product within each category.",
+            "2. Sort the products within each 'product_category' by the summed 'sales_quantity' in descending order and select the top 3 products."
+        ]
+    },
+    "data11": {
+        "grouping": 1,
+        "merging": 1,
+        "father task": "Aggregate sales data by region and merge the results with regional market trends to analyze sales performance against market growth.",
+        "children tasks": [
+            "1. Group the 'sales_data' table by 'region' and calculate total sales for each region.",
+            "2. Merge the aggregated sales data with the 'market_trends' table on 'region' to combine sales performance with market growth data."
+        ]
+    },
+    "data12": {
+        "aggregating": 1,
+        "sorting": 1,
+        "father task": "I want to identify the top 5 products based on total sales volume, by aggregating sales across all regions and then sorting the results.",
+        "children tasks": [
+            "1. Aggregate sales data across all regions to calculate the total sales volume for each product.",
+            "2. Sort the aggregated results by total sales volume in descending order and select the top 5 products."
+        ]
+    },
+    "data13": {
+        "aggregating": 1,
+        "merging": 1,
+        "father task": "Calculate the average customer satisfaction score for each product and merge this information with product details to create a comprehensive product performance report.",
+        "children tasks": [
+            "1. Aggregate customer feedback data to calculate the average satisfaction score for each product.",
+            "2. Merge the aggregated satisfaction scores with the 'product_details' table on 'product_id' to combine product performance data with detailed product information."
+        ]
+    },
+    "data14": {
+        "indexing": 1,
+        "merging": 1,
+        "filtering": 1,
+        "father task": "Merge customer transactions with their profiles to identify high-value customers who made purchases over $1000 in the last year, optimizing query performance with indexing.",
+        "children tasks": [
+            "1. Create an index on the 'customer_id' column in both 'customer_profiles' and 'transactions' tables to improve the efficiency of the merging process.",
+            "2. Merge the 'customer_profiles' table with the 'transactions' table on 'customer_id' to consolidate transaction data with customer information.",
+            "3. Filter the merged table to select customers whose transactions exceed $1000 in total over the last year."
+        ]
+    },
+    "data15": {
+        "indexing": 1,
+        "aggregating": 1,
+        "father task": "Calculate the monthly average sales for each product category over the past year, using indexing to enhance query performance.",
+        "children tasks": [
+            "1. Create an index on the 'date' and 'product_category' columns in the 'sales_data' table to improve the efficiency of data retrieval for aggregation.",
+            "2. Aggregate the sales data by 'product_category' and 'date' (grouped by month) to calculate the monthly average sales for each category over the past year."
+        ]
+    },
+    "data16": {
+        "partitioning": 1,
+        "aggregating": 1,
+        "father task": "Analyze yearly sales performance by calculating the total sales for each product category in each year, using partitioning to optimize data management and aggregation for faster analysis.",
+        "children tasks": [
+            "1. Partition the 'sales_data' table by 'year' to organize the sales records efficiently for quicker access during analysis.",
+            "2. Aggregate the partitioned data to calculate the total sales for each product category in each year."
+        ]
+    },
+    "data17": {
+        "grouping": 1,
+        "aggregating": 1,
+        "sorting": 1,
+        "father task": "Identify the most profitable product categories by calculating the total profit for each category and then rank these categories from highest to lowest profit.",
+        "children tasks": [
+            "1. Group the 'sales' table by 'product_category' to organize sales data according to the category of each product.",
+            "2. Aggregate the grouped data to calculate the total profit for each product category by subtracting total costs from total sales.",
+            "3. Sort the results by total profit in descending order to identify the most to least profitable product categories."
+        ]
+    },
+    "data18": {
+        "grouping": 1,
+        "partitioning": 1,
+        "sorting": 1,
+        "father task": "Analyze sales performance by region and by month, partition the data by year, group by region, and within each group, sort the months by total sales in descending order.",
+        "children tasks": [
+            "1. Partition the 'sales_data' table by 'year' to separately analyze each year's sales data.",
+            "2. Within each partition, group the data by 'region' to compare sales performance across different regions.",
+            "3. For each region within each year, sort the months by total sales in descending order to identify peak sales periods."
+        ]
+    },
+    "data19": {
+        "filtering": 1,
+        "partitioning": 1,
+        "multiple tables joining": 1,
+        "aggregating": 1,
+        "father task": "Identify the average monthly expenditure of VIP customers for each product category over the past year, excluding any purchases below $50. This involves partitioning purchase records by month, filtering out low-value transactions, joining customer purchase data with product and customer tables, and then aggregating the data to calculate the average.",
+        "children tasks": [
+            "1. Partition the 'purchases' table by 'purchase_date' to separate transactions into monthly segments for the past year.",
+            "2. Filter the transactions to exclude those with a purchase amount less than $50.",
+            "3. Join the filtered 'purchases' data with the 'customer_info' table to identify VIP customers, and then with the 'product_info' table on 'product_id' to categorize purchases by product category.",
+            "4. Aggregate the joined data by 'product_category' for each month to calculate the average expenditure of VIP customers."
+        ]
+    },
+    "data20": {
+        "indexing": 1,
+        "merging": 1,
+        "sorting": 1,
+        "father task": "Create a comprehensive employee performance report by merging annual review data with personal information from separate tables, then ranking employees by performance score. Optimize the merging process with indexing on employee IDs.",
+        "children tasks": [
+            "1. Create an index on 'employee_id' in both 'employee_reviews' and 'employee_info' tables to enhance the efficiency of data retrieval during the merging process.",
+            "2. Merge the 'employee_reviews' table containing performance scores with the 'employee_info' table to compile detailed profiles for each employee.",
+            "3. Sort the merged data by 'performance_score' in descending order to rank employees from highest to lowest performer."
+        ]
+    },
+    "data21": {
+        "indexing": 1,
+        "partitioning": 1,
+        "filtering": 1,
+        "father task": "Optimize query performance for retrieving high-value transactions within the last month. Partition transactions by month, create an index on transaction values, and filter to select only transactions exceeding $10,000.",
+        "children tasks": [
+            "1. Partition the 'transactions' table by 'transaction_date' to organize data by month, enhancing performance for time-based queries.",
+            "2. Create an index on 'transaction_value' to speed up the retrieval of transactions based on their monetary value.",
+            "3. Filter the data to include only recent transactions from the last partitioned month that have a 'transaction_value' greater than $10,000."
+        ]
+    },
+    "data22": {
+        "multiple tables joining": 1,
+        "grouping": 1,
+        "merging": 1,
+        "father task": "Analyze annual sales performance by product category and compare it with inventory levels, by joining sales data with product and inventory information, grouping by category, and then merging analysis results with budget forecasts.",
+        "children tasks": [
+            "1. Join the 'sales_data' table with the 'product_info' table on 'product_id', and then join the resulting table with the 'inventory_data' table to combine sales, product, and inventory information.",
+            "2. Group the joined data by 'product_category' to analyze sales performance and inventory levels for each category.",
+            "3. Merge the grouped analysis results with the 'budget_forecasts' table on 'product_category' to compare actual sales performance and inventory levels against budgeted forecasts."
+        ]
+    },
+    "data23": {
+        "merging": 1,
+        "father task": "Consolidate quarterly sales reports into a single annual report for a comprehensive overview of yearly performance.",
+        "children tasks": [
+            "1. Merge the 'Q1_sales', 'Q2_sales', 'Q3_sales', and 'Q4_sales' tables into a single 'annual_sales' table, ensuring each quarter's data is accurately aligned by 'product_id' and 'region'."
+        ]
+    },
+    "data24": {
+        "filtering": 1,
+        "father task": "Retrieve all customer orders placed in the last 30 days that exceed $500 in total order value. This task requires filtering the orders database to focus on recent and high-value orders.",
+        "children tasks": [
+            "1. Filter the 'orders' table to select records where 'order_date' falls within the last 30 days.",
+            "2. Further filter these results to include only those orders where 'total_value' is greater than $500."
+        ]
+    },
+    "data25": {
+        "grouping": 1,
+        "father task": "Identify the number of employees in each department to understand departmental sizes and staffing levels.",
+        "children tasks": [
+            "1. Group the 'employees' table by 'department' to count the number of employees within each department."
+        ]
+    },
+    "data26": {
+        "sorting": 1,
+        "father task": "Organize a list of all products by their sales figures, in descending order.",
+        "children tasks": [
+            "1. Sort the 'product_sales' table by 'sales_figures' in descending order to rank products based on their sales performance."
+        ]
+    },
+    "data27": {
+        "partitioning": 1,
+        "father task": "Analyze yearly sales performance by calculating the total sales for each product category in each year, using partitioning to optimize data management.",
+        "children tasks": [
+            "1. Partition the 'sales_data' table by 'year' to organize the sales records efficiently."
+        ]
+    },
+    "data28": {
+        "indexing": 1,
+        "father task": "Optimize the search performance for customer inquiries by creating an index on the customer email address in the 'customer_info' table.",
+        "children tasks": [
+            "1. Create an index on the 'email' column in the 'customer_info' table to expedite lookup operations for customer records based on email addresses."
+        ]
+    },
+    "data29": {
+        "aggregating": 1,
+        "father task": "Calculate the total sales for each product category within the last year.",
+        "children tasks": [
+            "1. Aggregate the 'sales_data' table to calculate the total sales for each product category over the last year."
+        ]
+    },
+    "data30": {
+        "aggregating": 1,
+        "father task": "Calculate the average sales for each product category within the last year.",
+        "children tasks": [
+            "1. Aggregate the 'sales_data' table to calculate the average sale transaction value for each product category over the last year."
+        ]
+    }
+}

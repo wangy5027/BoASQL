@@ -1,0 +1,26 @@
+# Downloaded datasets and databases
+/spider/
+/test_suite_database/
+/Evaluation/test-suite-sql-eval-master/test-suite-sql-eval-master/spider/
+/Evaluation/test-suite-sql-eval-master/test-suite-sql-eval-master/database/
+
+# Python / notebook caches and local environments
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+.env
+
+# Regenerated experiment outputs; final evaluation inputs are retained
+/DEV_gold.txt
+/DEV_predict*.txt
+/DEV_question.txt
+/trees.json
+/printlog.txt
+/fault_instances.txt
+/SmarterDB_Evaluation/
+/SmarterDB_Evaluationeval_result.txt
+/experience_tmp/
+/experiment_version1/
+/correctified_official_evaluation/*_predict_ouput/
