@@ -6,62 +6,64 @@ Yang Wang, Zhilong Xie, Lin Zhang, Lingyun Gu, Qing Li
 
 *Engineering Applications of Artificial Intelligence*, Volume 166, Part A, Article 113454 (2026).
 
-[论文与 DOI](https://doi.org/10.1016/j.engappai.2025.113454) · [出版社页面](https://www.sciencedirect.com/science/article/pii/S0952197625034852) · [BibTeX 文件](citation.bib)
+[Paper / DOI](https://doi.org/10.1016/j.engappai.2025.113454) · [Publisher](https://www.sciencedirect.com/science/article/pii/S0952197625034852) · [BibTeX](citation.bib)
 
-本仓库提供 BoA-SQL 的 Agent 推理与 Spider 实验实现。系统通过数据库结构筛选、任务树规划、逐步 SQL 生成与执行反馈修复，将自然语言问题转换为 SQL。
+This repository provides the agent inference implementation and Spider experiments for BoA-SQL. The system converts natural language questions into SQL through schema filtering, task-tree planning, stepwise SQL generation, and repair guided by execution feedback.
 
-## 当前发布内容
+## Release Scope
 
-**本次发布包含 Agent 推理与 Spider 实验代码，尚不包含强化学习训练代码。**
+**This release includes agent inference and Spider experiment code. Reinforcement learning training code is not included.**
 
-- 数据库结构初始化、表列筛选、任务规划、SQL 生成、执行与修复代码。
-- test-suite 评测工具、三份历史预测及配套 gold。
-- 本实验使用的修正版评测代码及 70 个必要参考文件。
-- 数据准备、模型配置、运行与评测说明。
+- Database schema initialization, table and column selection, task planning, SQL generation, execution, and repair.
+- The test-suite evaluation tool, three historical prediction files, and their corresponding gold references.
+- The corrected evaluation implementation used in our experiments, with 70 required reference files.
+- Instructions for data preparation, model configuration, execution, and evaluation.
 
-完整数据集、模型权重、运行缓存和中间实验输出不随仓库上传。公开数据集的下载入口及本地放置方式见[数据准备说明](Spider_Experiment/DATA_SETUP.md)。
+Full datasets, model weights, runtime caches, and intermediate experiment outputs are not included. See the [data preparation guide](Spider_Experiment/DATA_SETUP.md) for public dataset download links and expected file locations.
 
-## 开始使用
+## Getting Started
+
+Clone the repository and enter the experiment directory. The following commands use PowerShell:
 
 ```powershell
 git clone https://github.com/wangy5027/BoASQL.git
 Set-Location BoASQL/Spider_Experiment
 ```
 
-随后依次完成环境安装、数据下载和模型配置，再运行 Agent：
+Before running the agent, install the dependencies, prepare the data, and configure the model:
 
-1. 阅读[环境安装与模型配置](Spider_Experiment/README.md)。模型接口通过 `OPENAI_API_KEY`、`OPENAI_BASE_URL` 和 `OPENAI_MODEL` 环境变量配置。
-2. 按[数据准备说明](Spider_Experiment/DATA_SETUP.md)下载 Spider 1.0 和评测所需数据，整理数据库及建表语句。
-3. 运行批量入口 `python Run.py`，或使用下方的单题入口；单题运行同样需要对应数据库、依赖及模型服务。
+1. Follow the [environment and model setup instructions](Spider_Experiment/README.md). Configure the model interface through the `OPENAI_API_KEY`, `OPENAI_BASE_URL`, and `OPENAI_MODEL` environment variables.
+2. Download Spider 1.0 and the required evaluation data, then arrange the databases and schema files as described in the [data preparation guide](Spider_Experiment/DATA_SETUP.md).
+3. Run `python Run.py` for batch inference, or use the single-question entry point below. Single-question inference also requires the relevant database, dependencies, and model service.
 
 ```powershell
 python Tree_Running/Run.py "How many singers are there?" --db-id concert_singer
 ```
 
-批量入口从开发集第 0 题开始。运行输出采用追加写入，重新运行前须处理旧输出；失败后的恢复方式、模型调用要求及评测命令请参阅[完整项目说明](Spider_Experiment/README.md)。
+Batch inference starts at question index 0 of the development set. Outputs are appended to existing files, so move or clear previous outputs before starting a new run. See the [detailed project guide](Spider_Experiment/README.md) for restart behavior, model API requirements, and evaluation commands. The detailed project and data preparation guides are currently in Chinese.
 
-资源路径根据源码位置定位；可以移动项目文件夹，但请保留内部相对层级。评测命令显式传入的相对路径按执行命令时的工作目录解释。
+Project resources are located relative to the source files. You can move the project directory while preserving its internal structure. Relative paths explicitly passed to evaluation commands are resolved from the current working directory.
 
-## 目录与复现状态
+## Repository Contents and Reproducibility
 
-| 路径 | 内容 |
+| Path | Contents |
 | --- | --- |
-| [Spider_Experiment/](Spider_Experiment/) | Agent 源码、实验说明、评测工具和路径回归测试 |
-| [Spider_Experiment/README.md](Spider_Experiment/README.md) | 环境、模型、运行与评测命令，以及已知限制 |
-| [Spider_Experiment/DATA_SETUP.md](Spider_Experiment/DATA_SETUP.md) | 数据下载、放置路径和评测输入说明 |
-| [citation.bib](citation.bib) | 本论文的 BibTeX 引用 |
+| [Spider_Experiment/](Spider_Experiment/) | Agent code, experiment documentation, evaluation tools, and path regression tests |
+| [Spider_Experiment/README.md](Spider_Experiment/README.md) | Environment setup, model configuration, execution and evaluation commands, and known limitations |
+| [Spider_Experiment/DATA_SETUP.md](Spider_Experiment/DATA_SETUP.md) | Dataset downloads, file layout, and evaluation inputs |
+| [citation.bib](citation.bib) | BibTeX entry for the paper |
 
-当前版本已完成静态与模拟入口检查，以及改名、含空格路径和不同工作目录下的路径回归检查。尚未重新执行完整模型实验或复核论文指标；依赖版本未锁定，历史预测文件与论文结果的对应关系仍需确认。详细限制见项目说明。
+The release has passed static checks, mocked entry-point checks, and path regression checks covering renamed directories, paths containing spaces, and execution from different working directories. Full model experiments have not been rerun, and the reported paper metrics have not been revalidated for this release. Dependency versions are not pinned, and the mapping between the historical prediction files and the reported results still requires confirmation. See the project guide for detailed limitations.
 
-不需要真实数据或模型 API 的路径检查可在 `Spider_Experiment` 目录执行：
+Run the path checks from `Spider_Experiment` without real datasets or model API calls:
 
 ```powershell
 python -B -m unittest discover -s tests -v
 ```
 
-## 引用
+## Citation
 
-如果本项目对你的研究有所帮助，请引用我们的论文：
+If you find this project useful for your research, please cite our paper:
 
 ```bibtex
 @article{wang2026boasql,
@@ -76,8 +78,8 @@ python -B -m unittest discover -s tests -v
 }
 ```
 
-## 第三方资源与反馈
+## Third-Party Resources and Feedback
 
-本项目使用 Spider 数据集和 test-suite 评测工具，请遵循各自的许可与引用要求。test-suite 的[原始说明](Spider_Experiment/Evaluation/test-suite-sql-eval-master/test-suite-sql-eval-master/README.md)和[许可证](Spider_Experiment/Evaluation/test-suite-sql-eval-master/test-suite-sql-eval-master/LICENSE)已保留；第三方许可证不自动适用于本项目的全部代码。本项目自有代码的开源许可尚未声明。
+This project uses the Spider dataset and the test-suite evaluation tool. Please follow their respective license and citation requirements. The test-suite tool's [original README](Spider_Experiment/Evaluation/test-suite-sql-eval-master/test-suite-sql-eval-master/README.md) and [LICENSE](Spider_Experiment/Evaluation/test-suite-sql-eval-master/test-suite-sql-eval-master/LICENSE) are retained. Third-party licenses do not automatically apply to all code in this repository; a license for the project's own code has not yet been declared.
 
-代码维护：[wangy5027](https://github.com/wangy5027)。使用问题可在[本仓库 Issues](https://github.com/wangy5027/BoASQL/issues)中反馈，附上运行环境、命令和已移除敏感信息的报错。
+Maintainer: [wangy5027](https://github.com/wangy5027). Please report usage questions through [GitHub Issues](https://github.com/wangy5027/BoASQL/issues), including your environment, command, and error output with sensitive information removed.
